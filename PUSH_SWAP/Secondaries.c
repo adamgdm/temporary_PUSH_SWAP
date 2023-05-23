@@ -107,6 +107,47 @@ int ft_find_min(stack **s)
     return (index);
 }
 
+int ft_find_max_two(stack **s, int ma) {
+    int max = -1;  // Initialize max to a minimum value
+
+    // Traverse the stack
+    stack *current = *s;
+    while (current != NULL) {
+        if (current->value < ma && current->value > max) {
+            max = current->value;
+        }
+        current = current->next;
+    }
+
+    return max;
+}
+
+
+int ft_find_max(stack **s)
+{
+    stack *a;
+    int i;
+    int index;
+    int max;
+
+    i = 1;
+    a = (*s);
+    max = a->value;
+    index = i;
+    while (a->next)
+    {
+        a = a->next;
+        i++;
+        if (a->value > max)
+        {    
+            max = a->value;
+            index = i;
+        }
+    }
+    return max;
+}
+
+
 int ft_find_min_num(stack **s)
 {
     stack *a;
@@ -123,6 +164,24 @@ int ft_find_min_num(stack **s)
         }
     }
     return (max);
+}
+
+int ft_find_max_num(stack **s)
+{
+    stack *a;
+    int max;
+
+    a = (*s);
+    max = a->value;
+    while (a->next)
+    {
+        a = a->next;
+        if (a->value > max)
+        {    
+            max = a->value;
+        }
+    }
+    return max;
 }
 
 int ft_check_sort(stack **a)

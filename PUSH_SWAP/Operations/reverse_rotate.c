@@ -18,6 +18,6 @@ void ft_reverse_rotate(stack **s, char c)
         last->previous = NULL;
         (*s)->previous = last;
         (*s) = last;
+        printf("rr%c\n", c);
     }
-    printf("rr%c\n", c);
 }

@@ -30,10 +30,11 @@ int ft_split_arguments(int index, char *str, int i, int current_index)
 void printLinkedList(stack* head) 
 {
     stack* current = head;
-    printf("Printing the linked list:\n");
+    //printf("Printing the linked list:\n");
     while(current != NULL) {
-        printf("value :%d\nprev: %p\nnext: %p\n", current->value, (void*)current->previous, (void*)current->next);
-        printf("\n");
+        printf("%d\n",current->value);
+        //printf("value :%d\nprev: %p\nnext: %p\n", current->value, (void*)current->previous, (void*)current->next);
+        //printf("\n");
         current = current->next;
     }
 }

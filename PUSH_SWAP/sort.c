@@ -105,10 +105,12 @@ stack *ft_sort_five(stack **a, stack **b, int argc, int index)
     return(*a);
 }
 
-stack *ft_sort_stack(stack **arguments, stack **b)
+stack *ft_sort_stack(stack **arguments, stack **b, stack **c)
 {
     int argument_count;
+    t_ints element;
 
+    element.hehe = c;
     argument_count = ft_count_linkedlist_elements(*arguments);
     if (argument_count == 2)
         return(ft_sort_two(arguments));
@@ -116,6 +118,8 @@ stack *ft_sort_stack(stack **arguments, stack **b)
         return(ft_sort_three(arguments));
     if (argument_count == 4 || argument_count == 5)
         return(ft_sort_five(arguments, b, argument_count, 0));
+    if (argument_count > 5)
+        return(ft_sort_more(arguments, b, argument_count, element));
     return (*arguments);
     
 }

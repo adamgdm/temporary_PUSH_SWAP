@@ -13,6 +13,18 @@ typedef struct stack
     struct stack *next;
 } stack;
 
+typedef struct elemo 
+{
+    int n;
+    int middle;
+    int offset;
+    int start;
+    int end;
+    stack *current;
+    int how_many;
+    stack **hehe;
+} t_ints;
+
 typedef struct elem 
 {
     int first;
@@ -46,7 +58,9 @@ void ft_fill_stack(stack **a, int arg);
 stack *ft_create_the_stack(int argc, char *args);
 
 int ft_find_min(stack **s);
+int ft_find_max(stack **s);
 int ft_find_min_num(stack **s);
+int ft_find_max_num(stack **s);
 int ft_count_linkedlist_elements(stack* head); 
 
 void ft_swap(stack **s, char c);
@@ -57,13 +71,15 @@ void ft_ss(stack *a, stack *b);
 void ft_rr(stack *a, stack *b);
 void ft_rrr(stack *a, stack *b);
 
-stack *ft_sort_stack(stack **arguments, stack **b);
+stack *ft_sort_stack(stack **arguments, stack **b, stack **c);
 stack *ft_sort_two(stack **a);
 stack *ft_sort_three(stack **a);
 stack *ft_sort_five(stack **a, stack **b, int argc, int index);
+stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem);
 
 int ft_find_chunk_min(stack **s, int chunk_nums, int what_chunk, int total);
-
+int ft_find_chunk_max(stack **s, int chunk_nums, int what_chunk, int total);
+int ft_find_max_two(stack **s, int ma);
 void ft_rotate_b_elements(stack **b);
 
 #endif
