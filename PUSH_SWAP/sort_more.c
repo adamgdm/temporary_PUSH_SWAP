@@ -71,6 +71,8 @@ int check_last_max(stack *ll, int last_max, int max)
 {
     if (!ll)
         return (last_max);
+    if (ll->next == NULL && ll->value != last_max)
+        return (last_max);
     while (ll->next)
     {
         if (ll->value == last_max)
@@ -141,9 +143,10 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
     }
     max = ft_find_max(b);
     min = 0;
+    int i = 0;
     iter = (*b);
-   printLinkedList(*b);
-    printf("MAX = %d\n", max);
+    //printLinkedList(*b);
+    //printf("MAX = %d\n", max);
     while (iter)
     {
         if (*a)
@@ -151,11 +154,21 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
             if (ft_last_stack(a)->value == max)
             {
                 ft_reverse_rotate(a,'a');
+                max = check_last_max(*a, max, ft_find_max_two(elem.hehe, max));
                 min--;
             }
         }
         if (iter->value == max)
+        {
+
             ft_push(b,a,'a');
+            max = check_last_max(*a, max, ft_find_max_two(elem.hehe, max));
+            if (i)
+            {
+                ft_reverse_rotate(b, 'b');
+                i--;
+            }
+        }
         else
         {
             if (!min || ((ft_last_stack(a)->value) < iter->value))
@@ -163,20 +176,31 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
                 ft_push(b,a,'a');
                 ft_rotate(a,'a');
                 min++;
+                if (i)
+                {
+                    ft_reverse_rotate(b, 'b');
+                    i--;
+                }
             }
-            else if ((*b)->value != max && (ft_last_stack(a)->value) > iter->value)
+            else if ((*b)->value != max && (ft_last_stack(a)->value) > iter->value && min != 0)
+            {
                 ft_rotate(b,'b');
+                i++;
+            }
         }
         iter = (*b);
-        max = check_last_max(*a, max, ft_find_max_two(elem.hehe, max));
-        printf("MAX = %d\n", max);
+       // printf("MAX = %d\n", max);
+       // sleep(1);
     }
-    /*while (min)
+
+    while (min)
     {
         ft_reverse_rotate(a,'a');
         min--;
-    }*/
-    printLinkedList(*a);
+    }
+    //printLinkedList(*a);
+    //printf("\n\n");
+    //printLinkedList(*b);
 }
 
 
