@@ -104,7 +104,7 @@ int ft_find_min(stack **s)
             index = i;
         }
     }
-    return (index);
+    return (max);
 }
 
 int ft_find_max_two(stack **s, int ma) {

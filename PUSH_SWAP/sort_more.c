@@ -87,6 +87,45 @@ int check_last_max(stack *ll, int last_max, int max)
         return (last_max);
     return (last_max);
 }
+int ft_count(stack *head)
+{
+    int count = 0;
+    stack *current = head;
+
+    while (current != NULL)
+    {
+        count++;
+        current = current->next;
+    }
+
+    return count;
+}
+
+int ft_get_min(stack **a, int last_min)
+{
+    stack *s;
+    int min;
+
+    s = (*a);
+    min = 2147483647;
+    while (s)
+    {
+        if (s->value < min && s->value > last_min)
+            min = s->value;
+        s = s->next;
+    }
+    return (min);
+}
+
+int ft_get_offset(argc)
+{
+    if (argc < 11)
+        return (5);
+    if (argc < 151)
+        return (8);
+    else
+        return (17);
+}
 
 stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
 {
@@ -96,57 +135,73 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
     int chunck_current;
     int Position;
     int size;
+    int middle;
+    int offset;
+    int i;
+    int sortedArray[argc];
     stack *iter;
 
-    How_many = (0.015 * argc) + 3.5;
-    chunck_current = 1;
-    size = argc;
-    while (chunck_current <= How_many)
+    offset = argc / ft_get_offset(argc);
+    //How_many = (0.015 * argc) + 5.25;
+    //printLinkedList(*a);
+    //exit(0);
+    sortedArray[0] = ft_find_min(a);
+    // printf("%d ", sortedArray[0]);
+    i = 1;
+    while(i < argc)
     {
-        Position = 1;
+        sortedArray[i] = ft_get_min(a, sortedArray[i - 1]);
+        // printf("%d ", sortedArray[i]);
+        i++;
+    }
+    // exit(0);
+    size = argc;
+    middle = sortedArray[argc / 2];
+    min = argc / 2;
+    max = argc / 2;
+    int ac;
+    i = 1;
+    while (*a)
+    {
+        ac = size;
+        min -= offset;
+        if (min < 0)
+            min = 0;
+        max += offset;
+        if (max >= argc)
+            max = argc - 1;
         iter = (*a);
-        min = ft_find_chunk_min(elem.hehe,How_many,chunck_current,argc);
-        max = ft_find_chunk_max(elem.hehe,How_many,chunck_current,argc);
-        while (iter)
+        while (i <= ac)
         {
-            if (iter->value >= min && iter->value <= max)
+            if (iter->value >= sortedArray[min] && iter->value <= sortedArray[max])
             {
-                //printf("Number = %d && Chuck = %d (Min = %d, Max = %d, Position = %d, size = %d)\n",iter->value,chunck_current, min,max, Position, size);
-                if (Position <= size / 2)
+                if ((iter)->value > middle)
+                    ft_push(a,b,'b');
+                else if ((iter)->value <= middle)
                 {
-                    while (Position != 1)
-                    {
-                        ft_rotate(a,'a');
-                        Position--;
-                    }
+                    ft_push(a,b,'b');
+                    ft_rotate(b,'b');
                 }
-                else
-                {
-                    while ((size - Position + 1) && size > 1)
-                    {
-                        ft_reverse_rotate(a,'a');
-                        Position++;
-                    }
-                }
-                ft_push(a,b,'a');
-                Position = 1;
-                iter = (*a);
                 size--;
             }
             else
             {
-                Position++;
-                iter = iter->next;
+                ft_rotate(a,'a');
             }
+            iter = (*a);
+            i++;
         }
-        chunck_current++;
+        i = 1;
     }
     max = ft_find_max(b);
     min = 0;
-    int i = 0;
+    Position = 1;
+    i = 0;
     iter = (*b);
-    //printLinkedList(*b);
+    // printLinkedList(*b);
+
     //printf("MAX = %d\n", max);
+    
     while (iter)
     {
         if (*a)
@@ -160,47 +215,69 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
         }
         if (iter->value == max)
         {
-
             ft_push(b,a,'a');
             max = check_last_max(*a, max, ft_find_max_two(elem.hehe, max));
-            if (i)
-            {
-                ft_reverse_rotate(b, 'b');
-                i--;
-            }
         }
-        else
+        else 
         {
             if (!min || ((ft_last_stack(a)->value) < iter->value))
             {
                 ft_push(b,a,'a');
                 ft_rotate(a,'a');
                 min++;
-                if (i)
-                {
-                    ft_reverse_rotate(b, 'b');
-                    i--;
-                }
             }
-            else if ((*b)->value != max && (ft_last_stack(a)->value) > iter->value && min != 0)
+            else if ((*b)->value != max && ft_last_stack(a)->value > iter->value && min != 0)
             {
-                ft_rotate(b,'b');
-                i++;
+                stack *temp = *b;
+                int tempPosition = 1;
+
+                while (temp && temp->value != max)
+                {
+                    tempPosition++;
+                    temp = temp->next;
+                }
+                // if (tempPosition == 2 && temp && temp->value == max)
+                // {
+                //     printf("WAAAAAAAAAA3\n");
+                //     ft_swap(b,'b');
+                // }
+                if (temp && temp->value == max)
+                {
+                    if (tempPosition <= size / 2)
+                    {
+                        while (tempPosition != 1)
+                        {
+                            ft_rotate(b, 'b');
+                            tempPosition--;
+                        }
+                    }
+                    else
+                    {
+                        while (tempPosition <= size && size > 1)
+                        {
+                            ft_reverse_rotate(b, 'b');
+                            tempPosition++;
+                        }
+                    }
+                }
+
+                iter = *b;
+                size = ft_count(*b);
+                Position = 1;
             }
         }
         iter = (*b);
+    }
+    // printLinkedList(*a);
+    // printf("\n\n");
+    // printLinkedList(*b);
        // printf("MAX = %d\n", max);
        // sleep(1);
-    }
-
     while (min)
     {
         ft_reverse_rotate(a,'a');
         min--;
     }
-    //printLinkedList(*a);
-    //printf("\n\n");
-    //printLinkedList(*b);
 }
 
 
