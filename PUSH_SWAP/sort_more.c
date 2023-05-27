@@ -124,7 +124,41 @@ int ft_get_offset(argc)
     if (argc < 151)
         return (8);
     else
-        return (17);
+        return (15);
+}
+
+void	ft_do_this(stack **b, int size, int max)
+{
+	int	i;
+    stack *a;
+    
+    i = 1;
+    a = (*b);
+	while (a)
+    {
+        if (a->value == max)
+            break ;
+        a = a->next;
+        i++;
+    }
+	if (i >= size)
+		ft_reverse_rotate(b,'b');
+	if (i < size)
+		ft_rotate(b,'b');
+}
+
+int ft_find_max_in_s(stack **a, int max)
+{
+    stack *lol;
+
+    lol = (*a);
+    while (lol)
+    {
+        if (lol->value == max)
+            return (1);
+        lol = lol->next;
+    }
+    return (0);
 }
 
 stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
@@ -197,9 +231,32 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
     min = 0;
     Position = 1;
     i = 0;
-    iter = (*b);
+    size = argc;
+    stack *boghdnan;
     // printLinkedList(*b);
-
+    iter = (*b);
+   /* while (iter->value != max)
+    {
+        iter = (*b);
+        if (!(*a))
+        {
+            ft_push(b,a,'a');
+            min++;
+            boghdnan = (*a);
+        }
+        if (iter->value != max)
+        {
+            if (boghdnan->value > iter->value)
+            {
+                ft_push(b,a,'b');
+                boghdnan = (*a);
+                min++;
+            }
+            else
+                break ;
+        }
+    }
+    iter = (*b);
     //printf("MAX = %d\n", max);
     
     while (iter)
@@ -260,7 +317,6 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
                         }
                     }
                 }
-
                 iter = *b;
                 size = ft_count(*b);
                 Position = 1;
@@ -268,11 +324,58 @@ stack *ft_sort_more(stack **a, stack **b, int argc, t_ints elem)
         }
         iter = (*b);
     }
-    // printLinkedList(*a);
-    // printf("\n\n");
-    // printLinkedList(*b);
-       // printf("MAX = %d\n", max);
-       // sleep(1);
+*/
+    i = argc - 1;
+    max = sortedArray[i];
+    while (iter)
+    {
+        if (ft_find_max_in_s(b, max) == 1)
+        {
+            if (!(*a) || iter->value == max)
+            {
+                if (!(*a))
+                {
+                    boghdnan = iter;
+                    min++;
+                }
+                else
+                {   
+                    if (i)
+                        max = sortedArray[i--];
+                    else
+                        max = sortedArray[0];    
+                }
+                if (i <= 0)
+                    i = 0;
+                ft_push(b,a,'a');
+                size--;
+            }
+            else
+            {
+                if (min == 0 || (iter->value > boghdnan->value && min != 0))
+                {
+                    ft_push(b,a,'a');
+                    ft_rotate(a,'a');
+                    boghdnan = iter;
+                    size--;
+                    min++;
+                }
+                else
+                    ft_do_this(b, size / 2, max);                
+            }
+        }
+        else            
+        {
+            ft_reverse_rotate(a,'a');
+            if (i)
+                max = sortedArray[i--];
+            else
+                max = sortedArray[0];
+            if (min)
+                min--;
+        }
+        iter = (*b);
+    }
     while (min)
     {
         ft_reverse_rotate(a,'a');
