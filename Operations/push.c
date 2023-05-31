@@ -1,6 +1,7 @@
 #include "../pushswap.h"
+
 /*
-void ft_push(stack **a, stack **b)
+void	ft_push(stack **a, stack **b)
 {
     if (!(*a))
         return ;
@@ -15,15 +16,14 @@ void ft_push(stack **a, stack **b)
         } 
     }
     
-
 }
 
-void ft_push(stack **a, stack **b, char c)
+void	ft_push(stack **a, stack **b, char c)
 {
     stack *pointer;
 
     if (!(*a))
-        return;
+        return ;
     pointer = (*a)->next;
     if (pointer)
         pointer->previous = NULL;
@@ -42,34 +42,28 @@ void ft_push(stack **a, stack **b, char c)
 }
 */
 
-void ft_push(stack **a, stack **b, char c)
+void	ft_push(stack **a, stack **b, char c)
 {
-    stack *pointer;
+	stack	*pointer;
 
-    if (!(*a))
-        return;
-
-    pointer = (*a)->next;
-    if (pointer)
-        pointer->previous = NULL;
-
-    if (*a == *b)
-        *b = NULL;
-
-    if (*b)
-    {
-        (*a)->next = (*b);
-        (*b)->previous = (*a);
-    }
-    else
-        (*a)->next = NULL;
-
-    (*b) = (*a);
-    (*a) = pointer;
-
-    if (*a)
-        (*a)->previous = NULL;
-
-    printf("p%c\n", c);
+	if (!(*a))
+		return ;
+	pointer = (*a)->next;
+	if (pointer)
+		pointer->previous = NULL;
+	if (*a == *b)
+		*b = NULL;
+	if (*b)
+	{
+		(*a)->next = (*b);
+		(*b)->previous = (*a);
+	}
+	else
+		(*a)->next = NULL;
+	(*b) = (*a);
+	(*a) = pointer;
+	if (*a)
+		(*a)->previous = NULL;
+	printf("p%c\n", c);
 }
 // 4 56 2 114 1
