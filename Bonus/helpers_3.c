@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers_3.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/01 02:58:10 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 04:26:03 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Checker.h"
 
 char	*ft_join_arguments(int argc, char **argv)
@@ -64,10 +76,7 @@ int	*ft_get_values(char *str, int ac, int index, int i)
 
 	list = malloc(sizeof(int) * ac);
 	if (!list)
-	{
-		free(str);
-		return (0);
-	}
+		return ((int *)ft_free_str(str));
 	len = ft_strlen(str);
 	while (i < len)
 	{
@@ -86,9 +95,9 @@ int	*ft_get_values(char *str, int ac, int index, int i)
 	return (list);
 }
 
-int	ft_find_min(stack **s)
+int	ft_find_min(t_stack **s)
 {
-	stack	*a;
+	t_stack	*a;
 	int		i;
 	int		index;
 	int		max;
@@ -110,12 +119,12 @@ int	ft_find_min(stack **s)
 	return (max);
 }
 
-int	ft_find_max_two(stack **s, int ma)
+int	ft_find_max_two(t_stack **s, int ma)
 {
-	stack	*current;
+	t_stack	*current;
+	int		max;
 
-	int max = -1; // Initialize max to a minimum value
-	// Traverse the stack
+	max = -1;
 	current = *s;
 	while (current != NULL)
 	{
@@ -126,80 +135,4 @@ int	ft_find_max_two(stack **s, int ma)
 		current = current->next;
 	}
 	return (max);
-}
-
-int	ft_find_max(stack **s)
-{
-	stack	*a;
-	int		i;
-	int		index;
-	int		max;
-
-	i = 1;
-	a = (*s);
-	max = a->value;
-	index = i;
-	while (a->next)
-	{
-		a = a->next;
-		i++;
-		if (a->value > max)
-		{
-			max = a->value;
-			index = i;
-		}
-	}
-	return (max);
-}
-
-int	ft_find_min_num(stack **s)
-{
-	stack	*a;
-	int		max;
-
-	a = (*s);
-	max = a->value;
-	while (a->next)
-	{
-		a = a->next;
-		if (a->value < max)
-		{
-			max = a->value;
-		}
-	}
-	return (max);
-}
-
-int	ft_find_max_num(stack **s)
-{
-	stack	*a;
-	int		max;
-
-	a = (*s);
-	max = a->value;
-	while (a->next)
-	{
-		a = a->next;
-		if (a->value > max)
-		{
-			max = a->value;
-		}
-	}
-	return (max);
-}
-
-int	ft_check_sort(stack **a)
-{
-	stack *current;
-
-	if (!(*a))
-		return (1);
-	current = (*a);
-	while (current->next != NULL)
-	{
-		if (current->value > current->next->value)
-			return (0);
-		current = current->next;
-	}
-	return (1);
 }

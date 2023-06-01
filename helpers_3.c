@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers_3.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/31 22:22:37 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 04:26:03 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int	ft_find_max(stack **s)
+int	ft_find_max(t_stack **s)
 {
-	stack	*a;
+	t_stack	*a;
 	int		i;
 	int		index;
 	int		max;
@@ -24,9 +36,9 @@ int	ft_find_max(stack **s)
 	return (max);
 }
 
-int	ft_find_min_num(stack **s)
+int	ft_find_min_num(t_stack **s)
 {
-	stack	*a;
+	t_stack	*a;
 	int		max;
 
 	a = (*s);
@@ -42,9 +54,9 @@ int	ft_find_min_num(stack **s)
 	return (max);
 }
 
-int	ft_find_max_num(stack **s)
+int	ft_find_max_num(t_stack **s)
 {
-	stack	*a;
+	t_stack	*a;
 	int		max;
 
 	a = (*s);
@@ -60,9 +72,9 @@ int	ft_find_max_num(stack **s)
 	return (max);
 }
 
-int	ft_check_sort(stack **a)
+int	ft_check_sort(t_stack **a)
 {
-	stack	*current;
+	t_stack	*current;
 
 	if (!(*a))
 		return (1);
@@ -76,12 +88,12 @@ int	ft_check_sort(stack **a)
 	return (1);
 }
 
-int	ft_find_min_index(stack **s)
+int	ft_find_min_index(t_stack **s)
 {
-	stack *a;
-	int i;
-	int index;
-	int max;
+	t_stack	*a;
+	int		i;
+	int		index;
+	int		max;
 
 	i = 1;
 	a = (*s);

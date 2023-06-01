@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/01 02:44:55 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 05:33:55 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-stack	*ft_sort_two(stack **a)
+t_stack	*ft_sort_two(t_stack **a)
 {
-	stack	*b;
+	t_stack	*b;
 	int		first;
 	int		second;
 
@@ -15,41 +27,35 @@ stack	*ft_sort_two(stack **a)
 	return (*a);
 }
 
-stack	*ft_sort_three(stack **a)
+t_stack	*ft_sort_three(t_stack **a)
 {
-	stack		*b;
-	elements	x;
+	t_stack		*b;
+	t_elements	x;
 
 	b = *a;
 	x.first = b->value;
-	b = b->next;
-	x.second = b->value;
-	b = b->next;
-	x.third = b->value;
-	if (x.first > x.second && x.second > x.third && x.first > x.third) /*321*/
+	x.second = b->next->value;
+	x.third = b->next->next->value;
+	if (x.first > x.second && x.second > x.third && x.first > x.third)
 	{
 		ft_swap(a, 'a');
 		ft_reverse_rotate(a, 'a');
 	}
 	else if (x.first < x.second && x.second > x.third && x.first < x.third)
-		/*132*/
 	{
 		ft_reverse_rotate(a, 'a');
 		ft_swap(a, 'a');
 	}
 	else if (x.first > x.second && x.second < x.third && x.first > x.third)
-		/*312*/
 		ft_rotate(a, 'a');
 	else if (x.first > x.second && x.second < x.third && x.first < x.third)
-		/*213*/
 		ft_swap(a, 'a');
 	else if (x.first < x.second && x.second > x.third && x.first > x.third)
-		/*231*/
 		ft_reverse_rotate(a, 'a');
 	return (*a);
 }
 
-stack	*ft_sort_five(stack **a, stack **b, int argc, int index)
+t_stack	*ft_sort_five(t_stack **a, t_stack **b, int argc, int index)
 {
 	int	i;
 	int	j;
@@ -60,18 +66,7 @@ stack	*ft_sort_five(stack **a, stack **b, int argc, int index)
 	{
 		index = ft_find_min_index(a);
 		while (index % argc != 1)
-		{
-			if (index > 2)
-			{
-				ft_reverse_rotate(a, 'a');
-				index++;
-			}
-			else
-			{
-				ft_rotate(a, 'a');
-				index--;
-			}
-		}
+			ft_rraoorra(a, &index);
 		ft_push(a, b, 'b');
 		if (argc == 5)
 			argc--;
@@ -86,7 +81,7 @@ stack	*ft_sort_five(stack **a, stack **b, int argc, int index)
 	return (*a);
 }
 
-stack	*ft_sort_stack(stack **arguments, stack **b, stack **c)
+t_stack	*ft_sort_t_stack(t_stack **arguments, t_stack **b, t_stack **c)
 {
 	int		argument_count;
 	t_ints	element;
@@ -102,4 +97,18 @@ stack	*ft_sort_stack(stack **arguments, stack **b, stack **c)
 	if (argument_count > 5)
 		return (ft_sort_more(arguments, b, argument_count));
 	return (*arguments);
+}
+
+void	ft_rraoorra(t_stack **a, int *index)
+{
+	if ((*index) > 2)
+	{
+		ft_reverse_rotate(a, 'a');
+		(*index)++;
+	}
+	else
+	{
+		ft_rotate(a, 'a');
+		(*index)--;
+	}
 }

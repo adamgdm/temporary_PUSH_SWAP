@@ -1,31 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/01 02:53:29 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 05:45:20 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Checker.h"
 
 int	main(int argc, char **argv)
 {
-	stack *a;
-	stack *b;
-	alements e;
-	char *s;
+	t_stack		*a;
+	t_stack		*b;
+	t_alements	e;
+	char		*s;
 
 	if (!ft_joinandcheck(argc, argv))
-		printf("Error\n");
+		ft_printf("Error\n");
 	else
 	{
 		e.args = ft_join_arguments(argc, argv);
 		e.ac = ft_arguments_count(e.args);
-		a = ft_create_the_stack(e.ac, e.args);
+		a = ft_create_the_t_stack(e.ac, e.args);
 		s = get_next_line(0);
 		while (s)
 		{
 			ft_handle_this(s, &a, &b);
-			free(s);
 			s = get_next_line(0);
 		}
-		if (s)
-			free(s);
 		if (ft_check_sort(&a) == 1)
-			printf("OK\n");
+			ft_printf("OK\n");
 		else
-			printf("KO\n");
+			ft_printf("KO\n");
 	}
 }

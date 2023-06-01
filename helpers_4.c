@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers_4.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/31 22:23:34 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 04:26:03 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-stack	*ft_last_stack(stack **head)
+t_stack	*ft_last_t_stack(t_stack **head)
 {
-	stack	*current;
+	t_stack	*current;
 
 	current = *head;
 	if (current == NULL)
@@ -12,7 +24,7 @@ stack	*ft_last_stack(stack **head)
 	return (current);
 }
 
-int	check_last_max(stack *ll, int last_max, int max)
+int	check_last_max(t_stack *ll, int last_max, int max)
 {
 	if (!ll)
 		return (last_max);
@@ -33,10 +45,10 @@ int	check_last_max(stack *ll, int last_max, int max)
 	return (last_max);
 }
 
-int	ft_count(stack *head)
+int	ft_count(t_stack *head)
 {
 	int		count;
-	stack	*current;
+	t_stack	*current;
 
 	count = 0;
 	current = head;
@@ -48,9 +60,9 @@ int	ft_count(stack *head)
 	return (count);
 }
 
-int	ft_get_min(stack **a, int last_min)
+int	ft_get_min(t_stack **a, int last_min)
 {
-	stack	*s;
+	t_stack	*s;
 	int		min;
 
 	s = (*a);
@@ -64,7 +76,7 @@ int	ft_get_min(stack **a, int last_min)
 	return (min);
 }
 
-int	ft_get_offset(argc)
+int	ft_get_offset(int argc)
 {
 	if (argc < 11)
 		return (5);

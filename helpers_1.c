@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers_1.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/31 22:19:10 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/05/31 22:20:01 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 int	ft_strlen(char *str)
@@ -54,9 +66,9 @@ long long	ft_atoll(char *str, long long res, long long sign, size_t i)
 	int	count;
 
 	count = 0;
-	while (str[i] == ' ' || str[i] == '\t' ||
-			str[i] == '\n' || str[i] == '\v' ||
-			str[i] == '\f' || str[i] == '\r')
+	while (str[i] == ' ' || str[i] == '\t'
+		|| str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
 		i++;
 	if (str[i] == '-')
 	{
@@ -77,9 +89,9 @@ long long	ft_atoll(char *str, long long res, long long sign, size_t i)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void *ptr;
-	char *cptr;
-	size_t i;
+	void	*ptr;
+	char	*cptr;
+	size_t	i;
 
 	ptr = malloc(count * size);
 	if (ptr != NULL)

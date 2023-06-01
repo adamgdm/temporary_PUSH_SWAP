@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers_2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/31 22:20:33 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 04:58:03 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 char	*ft_join_arguments(int argc, char **argv)
@@ -64,10 +76,7 @@ int	*ft_get_values(char *str, int ac, int index, int i)
 
 	list = malloc(sizeof(int) * ac);
 	if (!list)
-	{
-		free(str);
-		return (0);
-	}
+		return ((int *)ft_free_str(str));
 	len = ft_strlen(str);
 	while (i < len)
 	{
@@ -86,9 +95,9 @@ int	*ft_get_values(char *str, int ac, int index, int i)
 	return (list);
 }
 
-int	ft_find_min(stack **s)
+int	ft_find_min(t_stack **s)
 {
-	stack	*a;
+	t_stack	*a;
 	int		i;
 	int		index;
 	int		max;
@@ -110,12 +119,12 @@ int	ft_find_min(stack **s)
 	return (max);
 }
 
-int	ft_find_max_two(stack **s, int ma)
+int	ft_find_max_two(t_stack **s, int ma)
 {
-	stack	*current;
+	t_stack	*current;
+	int		max;
 
-	int max = -1; // Initialize max to a minimum value
-	// Traverse the stack
+	max = -1;
 	current = *s;
 	while (current != NULL)
 	{

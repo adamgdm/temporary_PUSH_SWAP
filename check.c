@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/31 22:12:58 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 04:58:10 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 char	*ft_check_numbers(char *str, int i, int j)
@@ -50,10 +62,7 @@ char	*ft_check_morethanmaxint(char *str, int i, int start, int len)
 		number = i;
 		number = ft_atoll(ft_substr(str, start, number), 0, 1, 0);
 		if (number > 2147483647 || number < -2147483648)
-		{
-			free(str);
-			return (0);
-		}
+			return ((char *)ft_free_str(str));
 	}
 	return (str);
 }
@@ -88,9 +97,10 @@ char	*ft_checkrepetition(char *str, int ac)
 
 char	*ft_joinandcheck(int argc, char **argv)
 {
-	char *fre;
-	char *arguments;
-	int argument_count;
+	char	*fre;
+	char	*arguments;
+	int		argument_count;
+
 	arguments = ft_join_arguments(argc, argv);
 	if (!arguments)
 		return (0);

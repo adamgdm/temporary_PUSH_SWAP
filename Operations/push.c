@@ -1,50 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/01 02:45:56 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 05:45:20 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../pushswap.h"
 
-/*
-void	ft_push(stack **a, stack **b)
+void	ft_push(t_stack **a, t_stack **b, char c)
 {
-    if (!(*a))
-        return ;
-    if !(**b)
-    {
-        if (*b)
-        *b = *a;
-        if ((*a)->next)
-        {
-            (*a) = (*a)->next;
-            
-        } 
-    }
-    
-}
-
-void	ft_push(stack **a, stack **b, char c)
-{
-    stack *pointer;
-
-    if (!(*a))
-        return ;
-    pointer = (*a)->next;
-    if (pointer)
-        pointer->previous = NULL;
-    if (*b)
-    {
-        (*a)->next = (*b);
-        (*b)->previous = (*a);
-    }
-    else
-        (*a)->next = NULL;
-    (*b) = (*a);
-    (*a) = pointer;
-    if (*a)
-        (*a)->previous = NULL;
-    printf("p%c\n", c);
-}
-*/
-
-void	ft_push(stack **a, stack **b, char c)
-{
-	stack	*pointer;
+	t_stack	*pointer;
 
 	if (!(*a))
 		return ;
@@ -64,6 +34,5 @@ void	ft_push(stack **a, stack **b, char c)
 	(*a) = pointer;
 	if (*a)
 		(*a)->previous = NULL;
-	printf("p%c\n", c);
+	ft_printf("p%c\n", c);
 }
-// 4 56 2 114 1

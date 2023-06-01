@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/01 02:47:39 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/01 05:45:20 by agoujdam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../pushswap.h"
 
-void	ft_swap(stack **s, char c)
+void	ft_swap(t_stack **s, char c)
 {
-	stack *a;
-	int argc;
+	t_stack	*a;
+	int		argc;
 
 	argc = ft_count_linkedlist_elements(*s);
 	if (argc > 1)
@@ -22,5 +34,5 @@ void	ft_swap(stack **s, char c)
 			a->previous = (*s)->next;
 		}
 	}
-	printf("s%c\n", c);
+	ft_printf("s%c\n", c);
 }
