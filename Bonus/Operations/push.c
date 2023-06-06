@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:49:03 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/01 04:26:03 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/06 01:14:18 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_push(t_stack **a, t_stack **b, char c)
 {
 	t_stack	*pointer;
 
+	(void)c;
 	if (!(*a))
 		return ;
 	pointer = (*a)->next;

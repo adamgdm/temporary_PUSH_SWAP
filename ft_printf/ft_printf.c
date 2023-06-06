@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agoujdam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 15:32:33 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/01/19 22:16:15 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:50:22 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_do_it(const char c, void *p, int fd)
 		return (0);
 }
 
-int	ft_ft_printf(const char *s, ...)
+int	ft_printf(const char *s, ...)
 {
 	va_list	string;
 	int		i;

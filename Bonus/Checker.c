@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:53:29 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/01 05:45:20 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/06 04:41:44 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	main(int argc, char **argv)
 			ft_handle_this(s, &a, &b);
 			s = get_next_line(0);
 		}
-		if (ft_check_sort(&a) == 1)
+		if (ft_check_sort(&a) == 1 && a &&(!b))
 			ft_printf("OK\n");
-		else
+		else if (!ft_check_sort(&a) || b)
 			ft_printf("KO\n");
 	}
 }

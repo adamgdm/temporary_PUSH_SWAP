@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 22:25:26 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/01 04:57:46 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:51:21 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ t_var	ft_intialize_variables(t_stack **a, t_stack **b, int argc)
 {
 	t_var	x;
 
+	(void)a;
+	(void)b;
 	x.offset = argc / ft_get_offset(argc);
 	x.i = 1;
 	x.size = argc;
