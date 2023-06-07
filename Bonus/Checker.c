@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:53:29 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/07 01:13:57 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/07 07:06:54 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	main(int argc, char **argv)
 	t_alements	e;
 	char		*s;
 
-	if (!ft_joinandcheck(argc, argv))
-		ft_printf("Error\n");
+	e.args = ft_joinandcheck(argc, argv);
+	if (!e.args)
+		write(2, "Error\n", 6);
 	else
 	{
-		e.args = ft_join_arguments(argc, argv);
 		e.ac = ft_arguments_count(e.args);
 		a = ft_create_the_t_stack(e.ac, e.args);
 		s = get_next_line(0);

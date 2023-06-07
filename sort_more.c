@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 22:25:12 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/07 03:44:09 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/07 07:02:24 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ t_var	handle_max_value(t_stack **a, t_stack **b, int *sorted_array, t_var x)
 		{
 			ft_push(b, a, 'a');
 			x.boghdnan = x.iter;
-			x.min++;
 		}
 		else
 		{
@@ -58,7 +57,7 @@ t_var	handle_max_value(t_stack **a, t_stack **b, int *sorted_array, t_var x)
 	}
 	else
 	{
-		if (x.iter->value > x.boghdnan->value && x.min != 0)
+		if (x.min == 0 || (x.iter->value > x.boghdnan->value && x.min != 0))
 			x = ft_do_that(a, b, x);
 		else
 			ft_do_this(b, x.size / 2, x.max);
@@ -74,8 +73,6 @@ t_var	handle_min_value(t_stack **a, int *sorted_array, t_var x)
 		x.max = sorted_array[x.i--];
 	else
 		x.max = sorted_array[0];
-	if (x.min)
-		x.min--;
 	return (x);
 }
 /*void	printLinkedList(t_stack *a, int inta)
@@ -113,6 +110,7 @@ t_stack	*ft_sort_more(t_stack **a, t_stack **b, int argc)
 	x.max = sorted_array[x.i];
 	while (x.iter)
 	{
+		x.min = ft_get_last_node(a, sorted_array[argc - 1], 0);
 		if (ft_find_max_in_s(b, x.max) == 1)
 			x = handle_max_value(a, b, sorted_array, x);
 		else
