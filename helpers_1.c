@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 22:19:10 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/05/31 22:20:01 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:23:52 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	*ft_calloc(size_t count, size_t size)
 		i = 0;
 		while (i < count * size)
 		{
-			*(cptr + i) = 0;
+			cptr[i] = 0;
 			i++;
 		}
 	}

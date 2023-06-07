@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 01:29:32 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/01 05:03:57 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/07 01:07:56 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	*ft_sort_array(t_stack **a, int argc)
 
 t_var	ft_do_that(t_stack **a, t_stack **b, t_var x)
 {
+	if (x.min == 0)
+		ft_printf("zab");
 	ft_push(b, a, 'a');
 	ft_rotate(a, 'a');
 	x.size--;

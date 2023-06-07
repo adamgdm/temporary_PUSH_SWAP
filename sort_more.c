@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 22:25:12 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/06 23:37:35 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:44:09 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,20 @@ t_var	handle_max_value(t_stack **a, t_stack **b, int *sorted_array, t_var x)
 	{
 		if (!(*a))
 		{
+			ft_push(b, a, 'a');
 			x.boghdnan = x.iter;
 			x.min++;
 		}
 		else
+		{
 			ft_do_norminette(&x.i, &x.max, sorted_array);
-		if (x.i <= 0)
-			x.i = 0;
-		ft_push(b, a, 'a');
+			ft_do_more(&x.i, a, b);
+		}
 		x.size--;
 	}
 	else
 	{
-		if (x.min == 0 || (x.iter->value > x.boghdnan->value && x.min != 0))
+		if (x.iter->value > x.boghdnan->value && x.min != 0)
 			x = ft_do_that(a, b, x);
 		else
 			ft_do_this(b, x.size / 2, x.max);
@@ -77,16 +78,16 @@ t_var	handle_min_value(t_stack **a, int *sorted_array, t_var x)
 		x.min--;
 	return (x);
 }
-void	printLinkedList(t_stack *a, int inta)
+/*void	printLinkedList(t_stack *a, int inta)
 {
-	ft_printf("\n\n");
+	ft_printf("\n");
 	while (a)
 	{
 		ft_printf("%d (MAX = %d)\n", a->value, inta);
 		a = a->next;
 	}
 	ft_printf("\n");
-}
+}*/
 
 t_var	ft_intialize_variables_second(t_var x, int argc, t_stack **b)
 {
@@ -116,14 +117,13 @@ t_stack	*ft_sort_more(t_stack **a, t_stack **b, int argc)
 			x = handle_max_value(a, b, sorted_array, x);
 		else
 			x = handle_min_value(a, sorted_array, x);
-		printLinkedList(*a, x.max);
 		x.iter = (*b);
-		sleep(2);
 	}
 	while (x.min)
 	{
 		ft_reverse_rotate(a, 'a');
 		x.min--;
 	}
+	free (sorted_array);
 	return (*a);
 }

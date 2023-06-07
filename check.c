@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 22:12:58 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/01 04:58:10 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:14:21 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ char	*ft_check_numbers(char *str, int i, int j)
 			if (i + 1 < j)
 			{
 				if (!(str[i + 1] >= '0' && str[i + 1] <= '9'))
-					return (0);
+					return ((char *)ft_free_str(str));
 				if (i != 0)
 				{
 					if (str[i - 1] != ' ')
-						return (0);
+						return ((char *)ft_free_str(str));
 				}
 			}
 			else
-				return (0);
+				return ((char *)ft_free_str(str));
 		}
 		else if (!(str[i] >= '0' && str[i] <= '9') && str[i] != ' ')
-			return (0);
+			return ((char *)ft_free_str(str));
 		i++;
 	}
 	return (str);
@@ -62,7 +62,7 @@ char	*ft_check_morethanmaxint(char *str, int i, int start, int len)
 		number = i;
 		number = ft_atoll(ft_substr(str, start, number), 0, 1, 0);
 		if (number > 2147483647 || number < -2147483648)
-			return ((char *)ft_free_str(str));
+			return (0);
 	}
 	return (str);
 }
@@ -97,20 +97,15 @@ char	*ft_checkrepetition(char *str, int ac)
 
 char	*ft_joinandcheck(int argc, char **argv)
 {
-	char	*fre;
 	char	*arguments;
 	int		argument_count;
 
 	arguments = ft_join_arguments(argc, argv);
 	if (!arguments)
 		return (0);
-	fre = arguments;
 	arguments = ft_check_numbers(arguments, 0, ft_strlen(arguments));
 	if (!arguments)
-	{
-		free(fre);
 		return (0);
-	}
 	arguments = ft_check_morethanmaxint(arguments, 0, 0, 0);
 	if (!arguments)
 		return (0);

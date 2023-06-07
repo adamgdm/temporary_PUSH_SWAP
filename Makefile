@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS_MDTORY = check.c helpers_1.c helpers_2.c helpers_3.c helpers_4.c helpers_5.c helpers_6.c \
-              makestack.c push_swap.c sort.c Operations/Helpers.c Operations/Op_double.c \
+              helpers_7.c makestack.c push_swap.c sort.c Operations/Helpers.c Operations/Op_double.c \
               Operations/push.c Operations/reverse_rotate.c Operations/rotate.c \
               Operations/swap.c sort_more.c ft_printf/Library/ft_putchar_fd.c ft_printf/Library/ft_putnbr_fd.c \
               ft_printf/Library/ft_putu_fd.c ft_printf/Library/ft_printp_fd.c \

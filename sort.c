@@ -6,7 +6,7 @@
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:44:55 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/01 05:33:55 by agoujdam         ###   ########.fr       */
+/*   Updated: 2023/06/07 05:39:01 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,10 @@ t_stack	*ft_sort_five(t_stack **a, t_stack **b, int argc, int index)
 	return (*a);
 }
 
-t_stack	*ft_sort_t_stack(t_stack **arguments, t_stack **b, t_stack **c)
+t_stack	*ft_sort_t_stack(t_stack **arguments, t_stack **b)
 {
 	int		argument_count;
-	t_ints	element;
 
-	element.hehe = c;
 	argument_count = ft_count_linkedlist_elements(*arguments);
 	if (argument_count == 2)
 		return (ft_sort_two(arguments));

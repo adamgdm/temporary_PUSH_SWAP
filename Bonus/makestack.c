@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agoujdam <agoujdam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 02:57:48 by agoujdam          #+#    #+#             */
-/*   Updated: 2023/06/01 05:45:20 by agoujdam         ###   ########.fr       */
+/*   Created: 2023/06/01 04:29:53 by agoujdam          #+#    #+#             */
+/*   Updated: 2023/06/07 05:38:38 by agoujdam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,14 @@ void	ft_fill_t_stack(t_stack **a, int arg)
 t_stack	*ft_create_the_t_stack(int argc, char *args)
 {
 	int		index;
-	t_stack	**t_stack_a;
+	t_stack	*t_stack_a;
 
-	t_stack_a = (t_stack **)malloc(sizeof(t_stack *));
-	if (!t_stack_a)
-		return (0);
-	*t_stack_a = NULL;
+	t_stack_a = NULL;
 	index = 1;
 	while (index <= argc)
 	{
-		ft_fill_t_stack(t_stack_a, ft_split_arguments(index, args, 0, 0));
+		ft_fill_t_stack(&t_stack_a, ft_split_arguments(index, args, 0, 0));
 		index++;
 	}
-	return (*t_stack_a);
+	return (t_stack_a);
 }
